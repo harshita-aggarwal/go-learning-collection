@@ -9,20 +9,19 @@ func Greet(l string) string {
 	
 	l = strings.ToLower(l)
 
-	switch l {
-	case "en":
-		return "Hello, Universe!"
-	case "id":
-		return "Halo, Semesta!"
-	case "fr":
-		return "Bonjour, Univers!"
-	case "de":
-		return "Hallo, Universum!"
-	case "it":
-		return "Ciao, Universo!"
-	case "sv":
-		return "Hej, Universum!"
-	default:
+	langs := map[string]string {
+		"en": "Hello, Universe!",
+		"id": "Halo, Semesta!",
+		"fr": "Bonjour, Univers!",
+		"de": "Hallo, Universum!",
+		"it": "Ciao, Universo!",
+		"sv": "Hej, Universum!",
+	}
+
+	greeting, exists := langs[l] 
+	if exists {
+		return greeting
+	} else {
 		return fmt.Sprintf("I don't know the language code: %s", l)
 	}
 }
