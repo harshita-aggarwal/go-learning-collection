@@ -6,10 +6,10 @@ import (
 )
 
 func Greet(l string) string {
-	
+
 	l = strings.ToLower(l)
 
-	langs := map[string]string {
+	langs := map[string]string{
 		"en": "Hello, Universe!",
 		"id": "Halo, Semesta!",
 		"fr": "Bonjour, Univers!",
@@ -18,7 +18,7 @@ func Greet(l string) string {
 		"sv": "Hej, Universum!",
 	}
 
-	greeting, exists := langs[l] 
+	greeting, exists := langs[l]
 	if exists {
 		return greeting
 	} else {
