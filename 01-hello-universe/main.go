@@ -18,6 +18,10 @@ func Greet(l string) string {
 		return "Bonjour, Univers!"
 	case "de":
 		return "Hallo, Universum!"
+	case "it":
+		return "Ciao, Universo!"
+	case "sv":
+		return "Hej, Universum!"
 	default:
 		return fmt.Sprintf("I don't know the language code: %s", l)
 	}

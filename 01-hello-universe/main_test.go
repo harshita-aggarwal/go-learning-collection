@@ -46,6 +46,28 @@ func TestGreet_German (t *testing.T) {
 		t.Errorf("Greet(%q) printed %q; want %q", l, got, want)
 	}
 }
+func TestGreet_Italian (t *testing.T) {
+
+	l := "it"
+
+	got := Greet(l)
+	want := "Ciao, Universo!"
+
+	if got != want {
+		t.Errorf("Greet(%q) printed %q; want %q", l, got, want)
+	}
+}
+func TestGreet_Swedish (t *testing.T) {
+
+	l := "sv"
+
+	got := Greet(l)
+	want := "Hej, Universum!"
+
+	if got != want {
+		t.Errorf("Greet(%q) printed %q; want %q", l, got, want)
+	}
+}
 func TestGreetUnknownLanguage(t *testing.T) {
 	l := "es"
 	got := Greet(l)
