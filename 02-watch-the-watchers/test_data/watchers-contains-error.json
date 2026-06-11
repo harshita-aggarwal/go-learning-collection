@@ -1,0 +1,172 @@
+[
+    {
+        "user-id": "1f2ad186-32c0-49d8-9bee-42f46215af2c",
+        "username": "movie.lover",
+        "email": "movie.lover@example.com",
+        "is-trial-subscription": true,
+        "movies": [
+            {
+                "title": "The Recipe For Chaos",
+                "genres": [
+                    "Comedy",
+                    "Adventure"
+                ],
+                "release-year": 2021,
+                "director": "Caldwell Dany",
+                "cast": [
+                    "Olivia Brown",
+                    "Emily Carter",
+                    "Michael Johnson",
+                    "Lucas Hall"
+                ]
+            ,
+            {
+                "title": "48 Hours With Alice",
+                "genres": [
+                    "Fantasy",
+                    "Sci-Fi",
+                    "Action"
+                ],
+                "release-year": 2022,
+                "director": "Benjamin Moore",
+                "cast": [
+                    "Sophia Wilson",
+                    "Ethan Cartez",
+                    "Isabella Anderson"
+                ]
+            },
+            {
+                "title": "Binary",
+                "genres": [
+                    "Thriller",
+                    "Mystery"
+                ],
+                "release-year": 2021,
+                "director": "Caroline Young",
+                "cast": [
+                    "Darla Alexander",
+                    "Billy Evans",
+                    "Pedro Hall"
+                ]
+            }
+        ]
+    },
+    {
+        "user-id": "2a817864-3683-4431-b1cd-dcd395aef147",
+        "username": "film.fanatic",
+        "email": "film.fanatic@example.com",
+        "is-trial-subscription": false,
+        "movies": [
+            {
+                "title": "White Wars",
+                "genres": [
+                    "Action",
+                    "Sci-Fi"
+                ],
+                "release-year": 2024,
+                "director": "Benjamin Moore",
+                "cast": [
+                    "Harper Wright",
+                    "Charlotte Lee",
+                    "Samuel Carter",
+                    "Grace White",
+                    "Evelyn Phillips"
+                ]
+            }
+        ]
+    },
+    {
+        "user-id": "3bee74a8-b06c-4a3c-be2e-4b2f21c80f40",
+        "username": "cinema.critic",
+        "email": "cinema.critic@example.com",
+        "is-trial-subscription": false,
+        "movies": [
+            {
+                "title": "White Wars",
+                "genres": [
+                    "Action",
+                    "Sci-Fi"
+                ],
+                "release-year": 2024,
+                "director": "Benjamin Moore",
+                "cast": [
+                    "Harper Wright",
+                    "Charlotte Lee",
+                    "Samuel Carter",
+                    "Grace White",
+                    "Evelyn Phillips"
+                ]
+            },
+            {
+                "title": "The Recipe For Chaos",
+                "genres": [
+                    "Comedy",
+                    "Adventure"
+                ],
+                "release-year": 2021,
+                "director": "Caldwell Dany",
+                "cast": [
+                    "Olivia Brown",
+                    "Emily Carter",
+                    "Michael Johnson",
+                    "Lucas Hall"
+                ]
+            },
+            {
+                "title": "The First Unknown",
+                "genres": [
+                    "Thriller",
+                    "Action"
+                ],
+                "release-year": 2023,
+                "director": "Amelia Young",
+                "cast": [
+                    "Alexander Walker",
+                    "Lucas Hall",
+                    "Mia Harris",
+                    "Henry King",
+                    "Isabella Anderson"
+                ]
+            }
+        ]
+    },
+    {
+        "user-id": "4a1e71e7-018b-4f9e-b241-96e39d2051f6",
+        "username": "movie.always",
+        "email": "movie.always@example.com",
+        "is-trial-subscription": false,
+        "movies": [
+            {
+                "title": "48 Hours With Alice",
+                "genres": [
+                    "Fantasy",
+                    "Sci-Fi",
+                    "Action"
+                ],
+                "release-year": 2022,
+                "director": "Benjamin Moore",
+                "cast": [
+                    "Sophia Wilson",
+                    "Ethan Cartez",
+                    "Isabella Anderson"
+                ]
+            },
+            {
+                "title": "White Wars",
+                "genres": [
+                    "Action",
+                    "Sci-Fi"
+                ],
+                "release-year": 2024,
+                "director": "Benjamin Moore",
+                "cast": [
+                    "Harper Wright",
+                    "Charlotte Lee",
+                    "Samuel Carter",
+                    "Grace White",
+                    "Evelyn Phillips"
+                ]
+            }
+        ]
+    }
+]
