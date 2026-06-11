@@ -4,23 +4,27 @@ import "testing"
 
 func TestGreet(t *testing.T) {
 	tests := []struct {
+		name string
 		lang string
 		want string
 	}{
-		{"en", "Hello, Universe!"},
-		{"fr", "Bonjour, Univers!"},
-		{"de", "Hallo, Universum!"},
-		{"id", "Halo, Semesta!"},
-		{"it", "Ciao, Universo!"},
-		{"sv", "Hej, Universum!"},
+		{"English", "en", "Hello, Universe!"},
+		{"French", "fr", "Bonjour, Univers!"},
+		{"German", "de", "Hallo, Universum!"},
+		{"Indonesian", "id", "Halo, Semesta!"},
+		{"Italian", "it", "Ciao, Universo!"},
+		{"Swedish", "sv", "Hej, Universum!"},
 	}
 
 	for _, test := range tests {
-		got := Greet(test.lang)
+		t.Run(test.name, func(t *testing.T) {
 
-		if got != test.want {
-			t.Errorf("Greet(%q) = %q; want %q",
-				test.lang, got, test.want)
-		}
+			got := Greet(test.lang)
+
+			if got != test.want {
+				t.Errorf("Greet(%q) = %q; want %q",
+					test.lang, got, test.want)
+			}
+		})
 	}
 }
