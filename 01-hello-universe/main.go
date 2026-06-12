@@ -5,6 +5,9 @@ import (
 	"strings"
 )
 
+/*-----------------*/
+/*Greet RETURNS GREETINGS IN THE LANGUAGE CODE PROVIDED AS INPUT*/
+/*-----------------*/
 func Greet(l string) string {
 
 	l = strings.ToLower(l)
