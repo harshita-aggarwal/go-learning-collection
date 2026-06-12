@@ -1,6 +1,7 @@
 package watcher
 
 import (
+	"bufio"
 	"encoding/json"
 	"os"
 	"sort"
@@ -111,5 +112,31 @@ func IsWatcherPresent(keyword string, watchers []Watcher) bool {
 		}
 	}
 	return false
+}
+
+func SaveJsonToFile(watchers []Watcher, outputFilename string) error {
+	data, err := json.MarshalIndent(watchers, "", "	")
+
+	if err!= nil {
+		return err
+	}
+
+	file, err := os.Create(outputFilename)
+	if err!= nil {
+		return err
+	}
+
+	defer file.Close()
+
+	writer := bufio.NewWriterSize(file, 512 * 1024)
+	defer writer.Flush()
+
+	_, err = writer.Write(data)
+
+	if err!= nil {
+		return err
+	}
+
+	return nil
 }
 

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/google/uuid"
 	"github.com/harshita-aggarwal/go-learning-collection/02-watch-the-watchers/watcher"
 )
 
@@ -23,5 +24,40 @@ func main() {
 	fmt.Printf("Popular Movies are: %v", string(data))
 	fmt.Println()
 
-	fmt.Println(watcher.IsWatcherPresent("Movies.lOver", watchers))
+	newWatcher := watcher.Watcher{
+		UserID: uuid.New(),
+		Username: "new.watcher",
+		Email: "new.watcher@example.com",
+		IsTrialSubscription: true,
+	}
+
+	watcherIdOne, _ := uuid.Parse("1f2ad186-32c0-49d8-9bee-42f46215af2c")
+	existingWatcher := watcher.Watcher{
+		UserID: watcherIdOne,
+		Username: "movie.lover.second.username",
+		Email: "movie.lover@example.com",
+		IsTrialSubscription: true,
+	}
+
+	if !(watcher.IsWatcherPresent(newWatcher.Email, watchers) || watcher.IsWatcherPresent(newWatcher.Username, watchers)) {
+		fmt.Println("Adding new watcher!!")
+		watchers = append(watchers, newWatcher)
+	}
+	if !(watcher.IsWatcherPresent(existingWatcher.Email, watchers) || watcher.IsWatcherPresent(existingWatcher.Username, watchers)) {
+		fmt.Println("Adding new watcher!")
+		watchers = append(watchers, existingWatcher)
+	}
+
+	for i, w := range watchers {
+		fmt.Printf("[%d of %d] Username: %s / Email: %s \n", i+1, len(watchers), w.Username, w.Email)
+	}
+
+	err = watcher.SaveJsonToFile(watchers, "./test_data/watchers-modified.json")
+
+	if err!=nil{
+		fmt.Println("Error Saving watchers: ", err)
+	}
+
+	fmt.Println("Watchers saved to file watchers-modified.json")
+
 }
