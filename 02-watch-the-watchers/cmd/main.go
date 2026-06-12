@@ -10,13 +10,20 @@ import (
 )
 
 func main() {
+
+	/*----------------------------*/
+	/*TO READ THE JSON FILE*/
+	/*----------------------------*/
 	firstwatchers, err := watcher.ReadWatchers("./test_data/watchers.json")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// popularMovies := watcher.FindPopularMovie(watchers)
+	/*----------------------------*/
+	/*TO FIND POPULAR MOVIES*/
+	/*----------------------------*/
+	// popularMovies := watcher.FindPopularMovie(firstwatchers)
 	// data, err := json.MarshalIndent(popularMovies, "", "  ")
 	// if err != nil {
 	// 	log.Fatal(err)
@@ -24,6 +31,9 @@ func main() {
 	// fmt.Printf("Popular Movies are: %v", string(data))
 	// fmt.Println()
 
+	/*----------------------------*/
+	/*NEW AND EXISTING WATCHERS FOR INPUT*/
+	/*----------------------------*/
 	// newWatcher := watcher.Watcher{
 	// 	UserID: uuid.New(),
 	// 	Username: "new.watcher",
@@ -50,28 +60,33 @@ func main() {
 		Email:               "movie.lover@example.com",
 		IsTrialSubscription: true,
 	}
-
-	// if !(watcher.IsWatcherPresent(newWatcher.Email, watchers) || watcher.IsWatcherPresent(newWatcher.Username, watchers)) {
+	
+	/*----------------------------*/
+	/*TO ADD NEW WATCHER IF NOT PRESENT*/
+	/*----------------------------*/
+	// if !(watcher.IsWatcherPresent(newWatcher.Email, firstwatchers) || watcher.IsWatcherPresent(newWatcher.Username, firstwatchers)) {
 	// 	fmt.Println("Adding new watcher!!")
-	// 	watchers = append(watchers, newWatcher)
+	// 	firstwatchers = append(firstwatchers, newWatcher)
 	// }
-	// if !(watcher.IsWatcherPresent(existingWatcher.Email, watchers) || watcher.IsWatcherPresent(existingWatcher.Username, watchers)) {
+	// if !(watcher.IsWatcherPresent(existingWatcher.Email, firstwatchers) || watcher.IsWatcherPresent(existingWatcher.Username, firstwatchers)) {
 	// 	fmt.Println("Adding new watcher!")
-	// 	watchers = append(watchers, existingWatcher)
+	// 	firstwatchers = append(firstwatchers, existingWatcher)
 	// }
 
-	// for i, w := range watchers {
-	// 	fmt.Printf("[%d of %d] Username: %s / Email: %s \n", i+1, len(watchers), w.Username, w.Email)
-	// }
-
+	/*----------------------------*/
+	/*TO SAVE JSON TO FILE*/
+	/*----------------------------*/
 	// err = watcher.SaveJsonToFile(watchers, "./test_data/watchers-modified.json")
-
+	
 	// if err!=nil{
-	// 	fmt.Println("Error Saving watchers: ", err)
-	// }
-
+		// 	fmt.Println("Error Saving watchers: ", err)
+		// }
+		
 	// fmt.Println("Watchers saved to file watchers-modified.json")
-
+		
+	/*----------------------------*/
+	/*TO MERGE TWO WATCHER SLICES*/
+	/*----------------------------*/
 	secondwatchers := []watcher.Watcher{
 		newWatcher2, newWatcher3, existingWatcher,
 	}
