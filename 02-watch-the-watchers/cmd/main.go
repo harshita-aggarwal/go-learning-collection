@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 
@@ -8,16 +9,16 @@ import (
 )
 
 func main() {
-	watchers, err := watcher.ReadWatchers("../test_data/watchers.json")
+	watchers, err := watcher.ReadWatchers("./test_data/watchers.json")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	jsonString, err := watcher.ToJson(watchers)
+	popularMovies := watcher.FindPopularMovie(watchers)
+	data, err := json.MarshalIndent(popularMovies, "", "  ")
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println(jsonString)
+	fmt.Printf("Popular Movies are: %v", string(data))
 }
