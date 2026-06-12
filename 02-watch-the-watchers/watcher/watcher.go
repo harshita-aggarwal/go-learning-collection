@@ -100,3 +100,14 @@ func FindPopularMovie(watchers []Watcher) []Movie {
 	return sortMovies(popularMovies)
 
 }
+
+func IsWatcherPresent(keyword string, watchers []Watcher) bool {
+
+	for _, watcher := range watchers {
+		if strings.EqualFold(keyword, watcher.Username) || strings.EqualFold(keyword, watcher.Email) {
+			return true
+		}
+	}
+	return false
+}
+

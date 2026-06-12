@@ -303,8 +303,6 @@ func TestFindPopularMovies(t *testing.T) {
 			allMovies = make(map[string]Movie)
 			moviePopularity = make(map[string]int)
 
-			//populateBothMaps(tc.watchers)
-
 			got := FindPopularMovie(tc.watchers)
 
 			if !reflect.DeepEqual(got, tc.want) {
@@ -408,5 +406,56 @@ func TestSortMovies(t *testing.T) {
 				t.Errorf("%v Expected %v, got %v", tc.name, tc.want, got)
 			}
 		})
+	}
+}
+
+func TestIsWatcherPresent(t *testing.T) {
+	testCases := []struct {
+		name     string
+		keyword string
+		watchers []Watcher
+		want     bool
+	}{
+		{
+			name: "NON_EXISTENT_USERNAME",
+			keyword: "non.existent.user",
+			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
+			want: false,
+		},
+		{
+			name:"NON_EXISTENT_EMAIL",
+			keyword: "non.existent.user@email.com",
+			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
+			want: false,
+		},
+		{
+			name: "EMPTY_KEYWORD",
+			keyword: "",
+			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
+			want: false,
+		},
+		{
+			name: "CASE_INSENSITIVE_USERNAME",
+			keyword: watcherFour.Username,
+			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
+			want: true,
+		},
+		{
+			name: "CASE_INSENSITIVE_EMAIL",
+			keyword: watcherOne.Email,
+			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
+			want: true,
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			got := IsWatcherPresent(tc.keyword, tc.watchers)
+
+			if got != tc.want {
+				t.Errorf("Expected: %v \n Got: %v", tc.want, got)
+			}
+		})
+		
 	}
 }

@@ -21,4 +21,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("Popular Movies are: %v", string(data))
+	fmt.Println()
+
+	fmt.Println(watcher.IsWatcherPresent("Movies.lOver", watchers))
 }
