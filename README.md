@@ -1,8 +1,8 @@
 # Go Hands-On Projects
 
-A collection of hands-on projects built while learning Go through practical software engineering exercises.
+A collection of hands-on Go (Golang) projects exploring core language features, testing, concurrency, file processing, APIs, databases, gRPC, and modern backend development practices.
 
-The goal of this repository is to learn Go by building small, focused projects that gradually introduce core language features, backend development concepts, testing practices, concurrency patterns, and production-ready engineering techniques.
+The goal of this repository is to learn Go by building small, focused projects that gradually introduce real-world software engineering concepts through practical implementation.
 
 ---
 
@@ -18,7 +18,7 @@ Each project is self-contained and includes:
 ```text
 go-hands-on-projects/
 ├── 01-hello-universe/
-├── 02-...
+├── 02-watch-the-watchers/
 ├── 03-...
 └── README.md
 ```
@@ -30,8 +30,8 @@ go-hands-on-projects/
 | # | Project | Status | Concepts |
 |---|---------|---------|----------|
 | 01 | Hello Universe | ✅ Complete | Functions, Maps, User Input, String Manipulation, Unit Testing |
-| 02 | Watch The Watchers | 👩🏻‍💻 In Progress | |
-| 03 | The Phantom Wings | ⏳ Planned | |
+| 02 | Watch The Watchers | ✅ Complete | JSON Processing, File I/O, Structs, Slices, Maps, UUIDs, Sorting, Package Organization, Table-Driven Testing |
+| 03 | The Phantom Wings | 👩🏻‍💻 In Progress | |
 | 04 | Servitor | ⏳ Planned | |
 | 05 | Tock Tick | ⏳ Planned | |
 | 06 | Quick Vault | ⏳ Planned | |
@@ -44,24 +44,26 @@ go-hands-on-projects/
 
 Through these projects, I aim to gain practical experience with:
 
-- Go fundamentals
-- Error handling
-- Testing
-- Package organization
-- REST APIs
+- Go fundamentals and idiomatic Go practices
+- Error handling and testing
+- Package organization and modular design
+- JSON processing and file I/O
+- Data structures and algorithms in Go
 - Concurrent programming with Goroutines and Channels
-- Worker Pools
-- Middleware and Routing
-- Event-Driven Architectures
-- Microservices
-- Cloud-Native Development
+- PostgreSQL and database interactions
+- REST APIs and gRPC services
+- Worker Pools and background processing
+- Middleware and routing
+- Event-driven architectures
+- Microservices and distributed systems
+- Cloud-native development
 
 ---
 
 ## Progress
 
 - [x] Project 01 - Hello Universe
-- [ ] Project 02
+- [x] Project 02 - Watch The Watchers
 - [ ] Project 03
 - [ ] Project 04
 - [ ] Project 05
