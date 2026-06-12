@@ -33,7 +33,7 @@ func ReadWatchers(filename string) ([]Watcher, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
-	} 
+	}
 
 	defer file.Close()
 
@@ -70,7 +70,7 @@ func populateBothMaps(watchers []Watcher) {
 			moviePopularity[movieTitle]++
 		}
 	}
-} 
+}
 
 func sortMovies(movies []Movie) []Movie {
 	sort.Slice(movies, func(i, j int) bool {
@@ -93,7 +93,7 @@ func FindPopularMovie(watchers []Watcher) []Movie {
 	var popularMovies = []Movie{}
 
 	for normalizeTitle, count := range moviePopularity {
-		if count >1 {
+		if count > 1 {
 			popularMovies = append(popularMovies, allMovies[normalizeTitle])
 		}
 	}
@@ -117,26 +117,42 @@ func IsWatcherPresent(keyword string, watchers []Watcher) bool {
 func SaveJsonToFile(watchers []Watcher, outputFilename string) error {
 	data, err := json.MarshalIndent(watchers, "", "	")
 
-	if err!= nil {
+	if err != nil {
 		return err
 	}
 
 	file, err := os.Create(outputFilename)
-	if err!= nil {
+	if err != nil {
 		return err
 	}
 
 	defer file.Close()
 
-	writer := bufio.NewWriterSize(file, 512 * 1024)
+	writer := bufio.NewWriterSize(file, 512*1024)
 	defer writer.Flush()
 
 	_, err = writer.Write(data)
 
-	if err!= nil {
+	if err != nil {
 		return err
 	}
 
 	return nil
 }
 
+func MergedWatcherSlices(watchers1 []Watcher, watchers2 []Watcher) []Watcher {
+	seen := make(map[uuid.UUID]bool)
+
+	for _, w := range watchers1 {
+		seen[w.UserID] = true
+	}
+
+	for _, w := range watchers2 {
+		if !seen[w.UserID] {
+			watchers1 = append(watchers1, w)
+			seen[w.UserID] = true
+		}
+	}
+
+	return watchers1
+}

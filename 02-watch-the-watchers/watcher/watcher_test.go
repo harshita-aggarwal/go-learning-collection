@@ -52,6 +52,7 @@ var (
 	watcherIdTwo, _   = uuid.Parse("2a817864-3683-4431-b1cd-dcd395aef147")
 	watcherIdThree, _ = uuid.Parse("3bee74a8-b06c-4a3c-be2e-4b2f21c80f40")
 	watcherIdFour, _  = uuid.Parse("4a1e71e7-018b-4f9e-b241-96e39d2051f6")
+	watcherIdFive, _  = uuid.Parse("1f2ad186-32c0-49d8-9bee-42f46215af2c")
 
 	watcherOne = Watcher{
 		UserID:              watcherIdOne,
@@ -83,6 +84,13 @@ var (
 		Email:               "movie.always@example.com",
 		IsTrialSubscription: false,
 		Movies:              []Movie{movieTwo, movieFour},
+	}
+	watcherFive = Watcher{
+		UserID:              watcherIdFive,
+		Username:            "movie.lover.second.username",
+		Email:               "movie.lover@example.com",
+		IsTrialSubscription: true,
+		Movies:              []Movie{movieOne, movieFour},
 	}
 )
 
@@ -412,39 +420,39 @@ func TestSortMovies(t *testing.T) {
 func TestIsWatcherPresent(t *testing.T) {
 	testCases := []struct {
 		name     string
-		keyword string
+		keyword  string
 		watchers []Watcher
 		want     bool
 	}{
 		{
-			name: "NON_EXISTENT_USERNAME",
-			keyword: "non.existent.user",
+			name:     "NON_EXISTENT_USERNAME",
+			keyword:  "non.existent.user",
 			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
-			want: false,
+			want:     false,
 		},
 		{
-			name:"NON_EXISTENT_EMAIL",
-			keyword: "non.existent.user@email.com",
+			name:     "NON_EXISTENT_EMAIL",
+			keyword:  "non.existent.user@email.com",
 			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
-			want: false,
+			want:     false,
 		},
 		{
-			name: "EMPTY_KEYWORD",
-			keyword: "",
+			name:     "EMPTY_KEYWORD",
+			keyword:  "",
 			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
-			want: false,
+			want:     false,
 		},
 		{
-			name: "CASE_INSENSITIVE_USERNAME",
-			keyword: watcherFour.Username,
+			name:     "CASE_INSENSITIVE_USERNAME",
+			keyword:  watcherFour.Username,
 			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
-			want: true,
+			want:     true,
 		},
 		{
-			name: "CASE_INSENSITIVE_EMAIL",
-			keyword: watcherOne.Email,
+			name:     "CASE_INSENSITIVE_EMAIL",
+			keyword:  watcherOne.Email,
 			watchers: []Watcher{watcherOne, watcherTwo, watcherThree, watcherFour},
-			want: true,
+			want:     true,
 		},
 	}
 
@@ -456,6 +464,71 @@ func TestIsWatcherPresent(t *testing.T) {
 				t.Errorf("Expected: %v \n Got: %v", tc.want, got)
 			}
 		})
-		
+
 	}
+}
+
+func TestMergeWatcherSlices(t *testing.T) {
+	testCases := []struct {
+		name     string
+		watcher1 []Watcher
+		watcher2 []Watcher
+		want     []Watcher
+	}{
+		{
+			name:     "DUPLICATE_USER_ID",
+			watcher1: []Watcher{watcherFive, watcherOne},
+			watcher2: []Watcher{watcherTwo, watcherThree, watcherOne},
+			want:     []Watcher{watcherFive, watcherOne, watcherTwo, watcherThree},
+		},
+		{
+			name:     "NO_DUPLICATE_USER",
+			watcher1: []Watcher{watcherFive, watcherOne},
+			watcher2: []Watcher{watcherTwo, watcherThree},
+			want:     []Watcher{watcherFive, watcherOne, watcherTwo, watcherThree},
+		},
+		{
+			name:     "FIRST_LIST_EMPTY",
+			watcher1: []Watcher{},
+			watcher2: []Watcher{watcherTwo, watcherThree},
+			want:     []Watcher{watcherTwo, watcherThree},
+		},
+		{
+			name:     "SECOND_LIST_EMPTY",
+			watcher1: []Watcher{watcherFive, watcherOne},
+			watcher2: []Watcher{},
+			want:     []Watcher{watcherFive, watcherOne},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T){
+
+			got := MergedWatcherSlices(tc.watcher1, tc.watcher2)
+
+			if !isSameUserId(got, tc.want) {
+				t.Errorf("%v Expected %v, got %v", tc.name, tc.want, got)
+			}
+
+		})
+	}
+}
+
+func isSameUserId(first, second []Watcher) bool {
+	if len(first)!=len(second){
+		return false
+	}
+
+	for _, w1 := range first {
+		for j, w2 := range second {
+			if w1.UserID == w2.UserID {
+				break
+			}
+
+			if j==len(second)-1 {
+				return false
+			}
+		}
+	}
+	return true
 }
