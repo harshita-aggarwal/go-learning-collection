@@ -104,6 +104,8 @@ func FindPopularMovie(watchers []Watcher) []Movie {
 func IsWatcherPresent(keyword string, watchers []Watcher) bool {
 
 	for _, watcher := range watchers {
+
+		// EqualFold is used for case insensitive comparison
 		if strings.EqualFold(keyword, watcher.Username) || strings.EqualFold(keyword, watcher.Email) {
 			return true
 		}
