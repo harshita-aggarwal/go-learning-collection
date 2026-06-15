@@ -8,10 +8,19 @@ import (
 	"github.com/google/uuid"
 )
 
+type Airline struct{
+	AirlineId uuid.UUID `json:"airline-id,omitempty"`
+	Name string `json:"name,omitempty"`
+	OriginCountry string `json:"origin-country,omitempty"`
+	IATACode string `json:"IATA-code,omitempty"`
+
+}
+
 type Aircraft struct{
 	AircraftId uuid.UUID `json:"aircraft-id,omitempty"`
 	RegistrationCode string `json:"registration-code,omitempty"`
 	CurrentMileage int `json:"current-mileage,omitempty"`
+	Airline *Airline `json:"airline,omitempty"`
 }
 
 func StructToJson(aircraft Aircraft) {

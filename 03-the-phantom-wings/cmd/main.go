@@ -12,25 +12,53 @@ import (
 func main(){
 
 	/*----------------------*/
+	/*AIRLINE STRUCT OBJECT*/
+	/*----------------------*/
+	airlineOne := aircraft.Airline{
+		AirlineId: uuid.New(),
+		Name: "Airline One",
+		OriginCountry: "India",
+		IATACode: "AI",
+	}
+
+	/*----------------------*/
 	/*AIRCRAFT STRUCT OBJECT*/
 	/*----------------------*/
-
-	aircraftIdOne, _ := uuid.Parse("4bc8e887-c2ba-46d6-8ecb-ce175775e3f9")
-	newAircraft := aircraft.Aircraft{
-		AircraftId: aircraftIdOne,
-		RegistrationCode: "newAircraft1",
+	aircraftOne := aircraft.Aircraft{
+		AircraftId: uuid.New(),
+		RegistrationCode: "aircraft1",
 		CurrentMileage: 0,
+		Airline: &airlineOne,
+	} 
+	aircraftTwo := aircraft.Aircraft{
+		AircraftId: uuid.New(),
+		RegistrationCode: "aircraft2",
+		CurrentMileage: 100,
+		Airline: &airlineOne,
 	} 
 
 	/*------------------*/
 	/*FOR STRUCT TO JSON*/
 	/*------------------*/
 	fmt.Println("Aircraft One -- Initial")
-	aircraft.StructToJson(newAircraft)
+	aircraft.StructToJson(aircraftOne)
+	fmt.Println("Aircraft Two -- Initial")
+	aircraft.StructToJson(aircraftTwo)
+	
 	
 	/*------------------*/
 	/*FOR ADDING MILEAGE*/
 	/*------------------*/
-	aircraft.AddMileage(&newAircraft, 400)
-	aircraft.StructToJson(newAircraft)
+	aircraft.AddMileage(&aircraftOne, 400)
+	aircraft.AddMileage(&aircraftTwo, 400)
+
+	/*---------------------*/
+	/*CHANGING AIRLINE DATA*/
+	/*---------------------*/
+	airlineOne.IATACode = "AIR"
+
+	fmt.Println("Aircraft One -- After Airline Update")
+	aircraft.StructToJson(aircraftOne)
+	fmt.Println("Aircraft Two -- After Airline Update")
+	aircraft.StructToJson(aircraftTwo)
 }
