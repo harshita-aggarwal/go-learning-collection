@@ -1,0 +1,102 @@
+[
+  {
+    "origin": "Jakarta",
+    "destination": "Singapore",
+    "distance": 553
+  },
+  {
+    "origin": "Jakarta",
+    "destination": "Kuala Lumpur",
+    "distance": 714
+  },
+  {
+    "origin": "Jakarta",
+    "destination": "Manila",
+    "distance": 1713
+  },
+  {
+    "origin": "Jakarta",
+    "destination": "Bangkok",
+    "distance": 1444
+  },
+  {
+    "origin": "Singapore",
+    "destination": "Jakarta",
+    "distance": 553
+  },
+  {
+    "origin": "Singapore",
+    "destination": "Kuala Lumpur",
+    "distance": 222
+  },
+  {
+    "origin": "Singapore",
+    "destination": "Manila",
+    "distance": 1471
+  },
+  {
+    "origin": "Singapore",
+    "destination": "Bangkok",
+    "distance": 877
+  },
+  {
+    "origin": "Kuala Lumpur",
+    "destination": "Jakarta",
+    "distance": 714
+  },
+  {
+    "origin": "Kuala Lumpur",
+    "destination": "Singapore",
+    "distance": 222
+  },
+  {
+    "origin": "Kuala Lumpur",
+    "destination": "Manila",
+    "distance": 1540
+  },
+  {
+    "origin": "Kuala Lumpur",
+    "destination": "Bangkok",
+    "distance": 740
+  },
+  {
+    "origin": "Manila",
+    "destination": "Jakarta",
+    "distance": 1713
+  },
+  {
+    "origin": "Manila",
+    "destination": "Singapore",
+    "distance": 1471
+  },
+  {
+    "origin": "Manila",
+    "destination": "Kuala Lumpur",
+    "distance": 1540
+  },
+  {
+    "origin": "Manila",
+    "destination": "Bangkok",
+    "distance": 1361
+  },
+  {
+    "origin": "Bangkok",
+    "destination": "Jakarta",
+    "distance": 1444
+  },
+  {
+    "origin": "Bangkok",
+    "destination": "Singapore",
+    "distance": 877
+  },
+  {
+    "origin": "Bangkok",
+    "destination": "Kuala Lumpur",
+    "distance": 740
+  },
+  {
+    "origin": "Bangkok",
+    "destination": "Manila",
+    "distance": 1361
+  }
+]

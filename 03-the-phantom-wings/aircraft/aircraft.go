@@ -13,7 +13,6 @@ type Airline struct{
 	Name string `json:"name,omitempty"`
 	OriginCountry string `json:"origin-country,omitempty"`
 	IATACode string `json:"IATA-code,omitempty"`
-
 }
 
 type Aircraft struct{
